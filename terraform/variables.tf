@@ -3,6 +3,11 @@ variable "subscription_id" {
   type        = string
 }
 
+variable "environment" {
+  description = "Target environment"
+  type = string
+}
+
 # Variables for dynamic configuration
 variable "location" {
   description = "Azure region to deploy resources"

@@ -13,7 +13,7 @@ module "state" {
 
 module "keyvvault" {
   source = "./modules/keyvault"
-  key_vault_name        = var.key_vault_name
+  key_vault_name        = "${var.key_vault_name}-${var.environment}"
   location              = var.location
   resource_group_name   = var.resource_group_name
 }

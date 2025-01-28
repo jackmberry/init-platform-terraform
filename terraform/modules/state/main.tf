@@ -12,8 +12,10 @@ resource "azurerm_storage_account" "sa" {
 }
 
 # Create Blob Container for Terraform state
-resource "azurerm_storage_container" "state" {
-  name                  = var.container_name
+resource "azurerm_storage_container" "create_states" {
+  for_each              = toset(var.state_container_names)
+
+  name                  = "${var.container_name}${each.key}"
   storage_account_id    = azurerm_storage_account.sa.id
   container_access_type = "private"
 }
